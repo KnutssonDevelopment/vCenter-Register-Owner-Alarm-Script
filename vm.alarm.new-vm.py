@@ -1,14 +1,17 @@
 #!/bin/python3
-import pytz
-from datetime import datetime
-import ssl
 import os
 import sys
+import ssl
+import pytz
+from datetime import datetime
+from dateutil.tz import tzlocal
 
 username = "alarm_user@vsphere.local"
 password = "PASSWORD"
 
-local_tz = pytz.timezone('Europe/Copenhagen')
+# For specific timezome use:
+# local_tz = pytz.timezone('Europe/Copenhagen')
+local_tz = tzlocal()
 now = datetime.now(local_tz)
 
 sys.path.extend(os.environ['VMWARE_PYTHON_PATH'].split(';'))
