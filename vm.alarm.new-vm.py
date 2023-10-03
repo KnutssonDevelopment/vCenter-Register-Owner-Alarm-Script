@@ -7,7 +7,7 @@ from datetime import datetime
 from dateutil.tz import tzlocal
 from pathlib import Path
 
-ENABLE_PASSWORD_OBFUSCATION = True
+ENABLE_PASSWORD_OBFUSCATION = False
 
 if (not ENABLE_PASSWORD_OBFUSCATION):
     username = "alarm_user@vsphere.local"
