@@ -14,6 +14,7 @@ You need to create a user that has access to set custom attributes vCenter tree.
 - Create a User or use existing user
 - Give the user access to set custom attributes by using the new role
 - Copy the script to vCenter
+- Change the username and password variables in the script to suit your needs
 - Set the correct file rights on the file to prohibit non root users from reading the service account password
 - Create the trigger alarm
 - Test by Creating a new vm
@@ -28,6 +29,11 @@ You need to create a user that has access to set custom attributes vCenter tree.
 |Username|Permission Path|Role|Propagate to children|
 |------------------------|--------------|---------------------|---|
 |alarm_user@vsphere.local|vCenter Object|Set Custom Attributes|YES|
+
+### Setting Script Permisssions
+```bash
+chmod 700 /root/alarmscripts/vm.alarm.new-vm.py
+```
 
 ## Credits
 I did take inspiration from Bryan McClellan and MARK III SYSTEMS BLOG.
