@@ -35,6 +35,21 @@ You need to create a user that has access to set custom attributes vCenter tree.
 chmod 700 /root/alarmscripts/vm.alarm.new-vm.py
 ```
 
+### Alarm Comfigurations
+|Setting|Value|
+|-------------------------------|--------------------------------------------------|
+|Alarm Name|Add Creator Information to Virtual Machine on Creation|
+|Target Type|Virtual Machines|
+|Alarm 1 - Rule Trigger|Creating VM|
+|Alarm 1 - Trigger the alarm and|Keep the target's current starte|
+|Alarm 1 - Run Script|Enabled|
+|Alarm 1 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 2 - Rule Trigger|Deploying VM|
+|Alarm 2 - Trigger the alarm and|Keep the target's current starte|
+|Alarm 2 - Run Script|Enabled|
+|Alarm 2 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+
+
 ## Credits
 I did take inspiration from Bryan McClellan and MARK III SYSTEMS BLOG.
 
