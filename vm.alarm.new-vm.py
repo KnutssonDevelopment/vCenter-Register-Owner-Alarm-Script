@@ -5,9 +5,14 @@ import ssl
 import pytz
 from datetime import datetime
 from dateutil.tz import tzlocal
+from pathlib import Path
 
-username = "alarm_user@vsphere.local"
-password = "PASSWORD"
+ENABLE_PASSWORD_OBFUSCATION = True
+
+if (not ENABLE_PASSWORD_OBFUSCATION):
+    username = "alarm_user@vsphere.local"
+    password = "PASSWORD"
+
 
 # For specific timezome use:
 # local_tz = pytz.timezone('Europe/Copenhagen')
@@ -15,13 +20,16 @@ local_tz = tzlocal()
 now = datetime.now(local_tz)
 
 sys.path.extend(os.environ['VMWARE_PYTHON_PATH'].split(';'))
+script_path=Path(os.path.abspath(__file__)).parent
+sys.path.append(script_path)
 
+import retrieve_information
 from pyVim import connect
 from pyVim.connect import SmartConnect
 from pyVmomi import vim
 
 
-def get_vcenter_connection(user, pwd):
+def get_vcenter_connection():
     import socket
 
     hostname = socket.gethostname()
@@ -30,7 +38,13 @@ def get_vcenter_connection(user, pwd):
     s.verify_mode=ssl.CERT_NONE
 
     try:
-        si = SmartConnect(host=hostname, user=user, pwd=pwd, sslContext=s)
+        if (ENABLE_PASSWORD_OBFUSCATION):
+            u, p = retrieve_information.manage_secrets()
+        else:
+            u = username
+            p = password
+            
+        si = SmartConnect(host=hostname, user=u, pwd=p, sslContext=s)
         return si
     except:
         return None
@@ -55,7 +69,7 @@ def main():
         print("ERROR(1): Variables not set")
         exit(1)
 
-    vc_connection = get_vcenter_connection(username, password)
+    vc_connection = get_vcenter_connection()
     if (not vc_connection):
         print("ERROR(2): Could not connect to vCenter")
         exit(2)
