@@ -1,5 +1,4 @@
 # Register Owner or Creator of a Virtual Machine upon creation in VMware vSphere
-
 This is a script for setting the owner and creation date of a Virtual Machine upon creation or deployment
 
 The script is meant to be run by an alarm set in vCenter.
@@ -14,7 +13,7 @@ You need to create a user that has access to set custom attributes vCenter tree.
 - Create a User or use existing user
 - Give the user access to set custom attributes by using the new role
 - Copy the script to vCenter
-- Change the username and password variables in the script to suit your needs
+- Change the username and password variables in the script to suit your needs or enable password obfuscation and run the script from the console to create the secrets file.
 - Set the correct file rights on the file to prohibit non root users from reading the service account password
 - Create the trigger alarm
 - Test by Creating a new vm
