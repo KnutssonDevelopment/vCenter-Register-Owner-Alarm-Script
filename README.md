@@ -32,6 +32,7 @@ You need to create a user that has access to set custom attributes vCenter tree.
 ### Setting Script Permisssions
 ```bash
 chmod 700 /root/alarmscripts/vm.alarm.new-vm.py
+chmod 700 /root/alarmscripts/retrieve_information.py
 ```
 
 ### Alarm Comfigurations
