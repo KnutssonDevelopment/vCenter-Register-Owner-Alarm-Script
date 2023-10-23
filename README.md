@@ -13,9 +13,9 @@ You need to create a user that has access to set custom attributes vCenter tree.
 - Create a User or use existing user
 - Give the user access to set custom attributes by using the new role
 - Copy the script to vCenter
-- Change the username and password variables in the script to suit your needs or enable password obfuscation and run the script from the console to create the secrets file.
+- Change the username and password variables in the script to suit your needs or enable password obfuscation and run the script from the console to create the secrets file
 - Set the correct file rights on the file to prohibit non root users from reading the service account password
-- Create the custom attribute in vCenter
+- Create the custom attribute in vCenter. The script can do it automatically, but the default role does not have access
 - Create the trigger alarm
 - Test by Creating a new vm
 - Test by Deploying a new vm from a template or ovf
