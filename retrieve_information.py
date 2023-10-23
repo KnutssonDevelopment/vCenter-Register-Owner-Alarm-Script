@@ -7,7 +7,6 @@ from pathlib import Path
 
 script_path=Path(os.path.abspath(__file__)).parent
 
-
 SECRETS_FILE = Path(script_path, 'secrets.txt').as_posix()
 MARKER = '^'
 ITERATIONS = 3
@@ -58,14 +57,18 @@ def manage_secrets():
     else:
         with open(SECRETS_FILE, 'r') as (f):
             lines = f.readlines()
+
         if not lines:
             print(f"ERROR: {SECRETS_FILE} is empty or incorrectly formatted. Please delete it.")
             exit(1)
+
         username_data = '='.join(lines[0].split('=')[1:]).strip()
         password_data = '='.join(lines[1].split('=')[1:]).strip()
+
         if DEBUG:
             print(f"username_data={username_data}")
             print(f"password_data={password_data}")
+
         if is_obfuscated(username_data):
             if is_obfuscated(password_data):
                 if DEBUG:
@@ -76,9 +79,11 @@ def manage_secrets():
                     print(f"username={username}")
                     print(f"password={password}")
                 return (username, password)
+
         if username_data == 'your_username_here' or password_data == 'your_password_here':
             print(f"Credentials file created. Please update with correct credentials. File: {SECRETS_FILE}")
             exit(1)
+
         print('Obfuscating credentials...')
         with open(SECRETS_FILE, 'w') as (f):
             for line in lines:
@@ -88,7 +93,8 @@ def manage_secrets():
 
         harden_file_permission(SECRETS_FILE)
         print('Credentials have been obfuscated.')
-        return (None, None)
+
+        return (username_data, password_data)
 
 
 if __name__ == '__main__':
