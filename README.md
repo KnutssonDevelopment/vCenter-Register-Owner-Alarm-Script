@@ -49,6 +49,10 @@ chmod 700 /root/alarmscripts/retrieve_information.py
 |Alarm 2 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 2 - Run Script|Enabled|
 |Alarm 2 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 3 - Rule Trigger|VM being cloned|
+|Alarm 3 - Trigger the alarm and|Keep the target's current starte|
+|Alarm 3 - Run Script|Enabled|
+|Alarm 3 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
 
 ### Troubleshooting
 The custom attribute is not set, or does not exists on the VM. You need to manually crete the custom attribute in vCenter.
