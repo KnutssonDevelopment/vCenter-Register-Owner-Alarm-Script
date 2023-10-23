@@ -15,7 +15,7 @@ now = datetime.now(local_tz)
 creatorCustomAttribute = 'CreatedBy'
 ENABLE_PASSWORD_OBFUSCATION = False
 
-if (not ENABLE_PASSWORD_OBFUSCATION):
+if (ENABLE_PASSWORD_OBFUSCATION):
     import retrieve_information
     username, password = retrieve_information.manage_secrets()
 else:
