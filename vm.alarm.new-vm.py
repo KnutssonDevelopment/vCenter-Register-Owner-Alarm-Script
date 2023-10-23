@@ -13,7 +13,7 @@ now = datetime.now(local_tz)
 
 # Custom Variables
 creatorCustomAttribute = 'CreatedBy'
-ENABLE_PASSWORD_OBFUSCATION = False
+ENABLE_PASSWORD_OBFUSCATION = True
 
 if (ENABLE_PASSWORD_OBFUSCATION):
     import retrieve_information
@@ -71,10 +71,16 @@ def main():
     alarm_target_name = os.getenv('VMWARE_ALARM_TARGET_NAME', None)
     alarm_target_id = os.getenv('VMWARE_ALARM_TARGET_ID', None)
     alarm_user = os.getenv('VMWARE_ALARM_EVENT_USERNAME', None)
-    alarm_vm = os.getenv('VMWARE_ALARM_EVENT_VM', None)
 
-    if (not alarm_vm):
+    if (not alarm_target_name):
         print("ERROR(1): Variables not set")
+        print("If you want to run manually you need to set the following environment variables:")
+        print("Example Commands:")
+        print("-----------------------------------------------------")
+        print('export VMWARE_ALARM_TARGET_NAME="TestVM"')
+        print('export VMWARE_ALARM_TARGET_ID="vm-123456"')
+        print('export VMWARE_ALARM_EVENT_USERNAME="DOMAIN\\User"')
+
         exit(1)
 
     hostname = socket.gethostname()
@@ -89,7 +95,7 @@ def main():
     vm = find_vm_by_id(content, alarm_target_id, alarm_target_name)
 
     if (not vm):
-        print(f"ERROR(3): Could not find vm with name: {alarm_target_name}")
+        print(f"ERROR(3): Could not find vm with name: '{alarm_target_name}' and id: '{alarm_target_id}'")
         exit(3)
 
     try:
