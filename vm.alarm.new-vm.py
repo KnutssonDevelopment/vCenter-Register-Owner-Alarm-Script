@@ -1,35 +1,43 @@
 #!/bin/python3
-import pytz
-from datetime import datetime
 import ssl
 import os
 import sys
 import socket
+
 from pathlib import Path
+import pytz
+from datetime import datetime
 
 local_tz = pytz.timezone('Europe/Copenhagen')
 now = datetime.now(local_tz)
 
+# Custom Variables
 creatorCustomAttribute = 'CreatedBy'
+ENABLE_PASSWORD_OBFUSCATION = False
+
+if (not ENABLE_PASSWORD_OBFUSCATION):
+    import retrieve_information
+    username, password = retrieve_information.manage_secrets()
+else:
+    username = "alarm_user@vsphere.local"
+    password = "PASSWORD"
 
 sys.path.extend(os.environ['VMWARE_PYTHON_PATH'].split(';'))
 script_path=Path(os.path.abspath(__file__)).parent
 sys.path.append(script_path)
 
-import retrieve_information
 from pyVim import connect
 from pyVim.connect import SmartConnect
 from pyVmomi import vim
 
 
-def get_vcenter_connection(hostname=None):
+def get_vcenter_connection(hostname=None, username=None, password=None):
 
     s=ssl.SSLContext(ssl.PROTOCOL_SSLv23) # For VC 6.5/6.0 s=ssl.SSLContext(ssl.PROTOCOL_TLSv1)
     s.verify_mode=ssl.CERT_NONE
 
     try:
-        u, p = retrieve_information.manage_secrets()
-        si = SmartConnect(host=hostname, user=u, pwd=p, sslContext=s)
+        si = SmartConnect(host=hostname, user=username, pwd=password, sslContext=s)
         return si
     except Exception as e:
         print(e)
@@ -71,7 +79,7 @@ def main():
 
     hostname = socket.gethostname()
 
-    vc_connection = get_vcenter_connection(hostname)
+    vc_connection = get_vcenter_connection(hostname, username, password)
     if (not vc_connection):
         print("ERROR(2): Could not connect to vCenter: {hostname}")
         exit(2)
