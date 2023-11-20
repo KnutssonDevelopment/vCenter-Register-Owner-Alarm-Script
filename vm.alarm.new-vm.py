@@ -87,7 +87,7 @@ def main():
 
     vc_connection = get_vcenter_connection(hostname, username, password)
     if (not vc_connection):
-        print("ERROR(2): Could not connect to vCenter: {hostname}")
+        print(f"ERROR(2): Could not connect to vCenter: {hostname}")
         exit(2)
 
     content=vc_connection.content
