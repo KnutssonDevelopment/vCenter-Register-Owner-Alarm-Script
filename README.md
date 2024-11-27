@@ -54,7 +54,7 @@ chmod 700 /root/alarmscripts/retrieve_information.py
 |Alarm 2 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
 
 ### Troubleshooting
-The custom attribute is not set, or does not exists on the VM. You need to manually crete the custom attribute in vCenter.
+The custom attribute is not set, or does not exists on the VM. You need to manually create the custom attribute in vCenter.
 
 ## Credits
 I did take inspiration from Bryan McClellan and MARK III SYSTEMS BLOG.
