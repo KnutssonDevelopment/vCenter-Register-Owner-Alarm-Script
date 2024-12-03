@@ -58,7 +58,7 @@ vi secrets.py
 
 ./vm.alarm.new-vm.py
 
-# Set the permission for the secrets file
+# Set the permission for the secrets file (Only for vCenter 8.x)
 chown vpxd:root /opt/scripts/alarmscripts/secrets.txt
 ```
 
