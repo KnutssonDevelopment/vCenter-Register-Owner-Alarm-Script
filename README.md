@@ -79,12 +79,6 @@ No you can go ahead and create and test the alarms.
 |------------------------|--------------|---------------------|---|
 |alarm_user@vsphere.local|vCenter Object|Set Custom Attributes|YES|
 
-### Setting Script Permisssions
-```bash
-chmod 700 /root/alarmscripts/vm.alarm.new-vm.py
-chmod 700 /root/alarmscripts/retrieve_information.py
-```
-
 ### Alarm Comfigurations
 |Setting|Value|
 |-------------------------------|--------------------------------------------------|
@@ -98,6 +92,10 @@ chmod 700 /root/alarmscripts/retrieve_information.py
 |Alarm 2 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 2 - Run Script|Enabled|
 |Alarm 2 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 3 - Rule Trigger|Cloning VM|
+|Alarm 3 - Trigger the alarm and|Keep the target's current starte|
+|Alarm 3 - Run Script|Enabled|
+|Alarm 3 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
 
 ### Troubleshooting
 The custom attribute is not set, or does not exists on the VM. You need to manually create the custom attribute in vCenter.
