@@ -5,6 +5,9 @@ The script is meant to be run by an alarm set in vCenter.
 
 The script can be placed almost anywhere on your vCenter Appliance, but I recommend placing it in "/opt/scripts/alarmscripts"
 
+## Notes
+When deploying a VM from an OVF, there user deploying the VM is an estimation. There is not solid link between the OVF Import task done by the user, and the VM Deplyoment task done by the vpxd service.
+
 ## Prerequisites
 You need to create a user that has access to set custom attributes vCenter tree. Normally set in the top of the tree (On the vCenter object) You should create a custom role for this limit the users permissions as much as possible in case the account gets compromised.
 
