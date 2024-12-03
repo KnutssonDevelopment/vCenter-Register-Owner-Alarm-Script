@@ -8,7 +8,8 @@ The script can be placed almost anywhere on your vCenter Appliance, but I recomm
 ## Prerequisites
 You need to create a user that has access to set custom attributes vCenter tree. Normally set in the top of the tree (On the vCenter object) You should create a custom role for this limit the users permissions as much as possible in case the account gets compromised.
 
-## TODO
+## Install
+### Overview
 - Create a Role in vCenter
 - Create a User or use existing user
 - Give the user access to set custom attributes by using the new role
@@ -19,9 +20,54 @@ You need to create a user that has access to set custom attributes vCenter tree.
 - Create the trigger alarm
 - Test by Creating a new vm
 - Test by Deploying a new vm from a template or ovf
+- Test by Cloning a vm
 
-## Notes
-- The alarm does not work for VM created from a clone.
+### Install Instructions
+First make sure all prerequisites are in place. Check the Overview.
+
+**Copy the script to vCenter**
+I recommend placing the scripts in the following location the location: /opt/scripts/alarmscripts
+The above location will be assumed during the following steps.
+```
+mkdir -p /opt/scripts/alarmscripts
+cd /opt/scripts/alarmscripts
+wget https://github.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/blob/main/retrieve_information.py
+wget https://github.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/blob/main/vm.alarm.new-vm.py
+chmod 700 /opt/scripts/alarmscripts/vm.alarm.new-vm.py
+chmod 700 /opt/scripts/alarmscripts/retrieve_information.py
+
+**This should only be done for version 8.x as the vpxd service now runs as a non root user**
+chown vpxd:root /opt/scripts/alarmscripts/vm.alarm.new-vm.py
+chown vpxd:root /opt/scripts/alarmscripts/retrieve_information.py
+```
+**The rest is relevant for all versions**
+Edit the script and set either:
+1) the username and password variable to the service account you made in vCenter and the ENABLE_PASSWORD_OBFUSCATION = False
+or
+2) Do not set the username and password varables, but make sure the ENABLE_PASSWORD_OBFUSCATION = True
+
+If you set the ENABLE_PASSWORD_OBFUSCATION = True, you need to run the script the set the credentials.
+```
+cd /opt/scripts/alarmscripts
+./vm.alarm.new-vm.py
+```
+Now set the credentials in the file: /opt/scripts/alarmscripts/secrets.txt and run the script again.
+```
+cd /opt/scripts/alarmscripts
+vi secrets.py
+
+./vm.alarm.new-vm.py
+
+# Set the permission for the secrets file
+chown vpxd:root /opt/scripts/alarmscripts/secrets.txt
+```
+
+You should have the following files in /opt/scripts/alarmscripts:
+- vm.alarm.new-vm.py
+- retrieve_information.py
+- secrets.txt (Only if you set ENABLE_PASSWORD_OBFUSCATION = True)
+
+No you can go ahead and create and test the alarms.
 
 ### vCenter Role - Example
 |Role Name|Rule Privileges|
