@@ -92,7 +92,7 @@ No you can go ahead and create and test the alarms.
 |Alarm 2 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 2 - Run Script|Enabled|
 |Alarm 2 - Run this Script|/opt/scripts/alarmscripts/vm.alarm.new-vm.py|
-|Alarm 3 - Rule Trigger|Cloning VM|
+|Alarm 3 - Rule Trigger|VM cloned|
 |Alarm 3 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 3 - Run Script|Enabled|
 |Alarm 3 - Run this Script|/opt/scripts/alarmscripts/vm.alarm.new-vm.py|
