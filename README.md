@@ -36,7 +36,7 @@ wget https://github.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/
 chmod 700 /opt/scripts/alarmscripts/vm.alarm.new-vm.py
 chmod 700 /opt/scripts/alarmscripts/retrieve_information.py
 
-**This should only be done for version 8.x as the vpxd service now runs as a non root user**
+#This should only be done for version 8.x as the vpxd service now runs as a non root user
 chown vpxd:root /opt/scripts/alarmscripts/vm.alarm.new-vm.py
 chown vpxd:root /opt/scripts/alarmscripts/retrieve_information.py
 ```
