@@ -3,7 +3,7 @@ This is a script for setting the owner and creation date of a Virtual Machine up
 
 The script is meant to be run by an alarm set in vCenter.
 
-The script can be placed almost anywhere on your vCenter Appliance, but I recommend placing it in "/root/alarmscripts"
+The script can be placed almost anywhere on your vCenter Appliance, but I recommend placing it in "/opt/scripts/alarmscripts"
 
 ## Prerequisites
 You need to create a user that has access to set custom attributes vCenter tree. Normally set in the top of the tree (On the vCenter object) You should create a custom role for this limit the users permissions as much as possible in case the account gets compromised.
@@ -87,15 +87,15 @@ No you can go ahead and create and test the alarms.
 |Alarm 1 - Rule Trigger|Creating VM|
 |Alarm 1 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 1 - Run Script|Enabled|
-|Alarm 1 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 1 - Run this Script|/opt/scripts/alarmscripts/vm.alarm.new-vm.py|
 |Alarm 2 - Rule Trigger|Deploying VM|
 |Alarm 2 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 2 - Run Script|Enabled|
-|Alarm 2 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 2 - Run this Script|/opt/scripts/alarmscripts/vm.alarm.new-vm.py|
 |Alarm 3 - Rule Trigger|Cloning VM|
 |Alarm 3 - Trigger the alarm and|Keep the target's current starte|
 |Alarm 3 - Run Script|Enabled|
-|Alarm 3 - Run this Script|/root/alarmscripts/vm.alarm.new-vm.py|
+|Alarm 3 - Run this Script|/opt/scripts/alarmscripts/vm.alarm.new-vm.py|
 
 ### Troubleshooting
 The custom attribute is not set, or does not exists on the VM. You need to manually create the custom attribute in vCenter.
