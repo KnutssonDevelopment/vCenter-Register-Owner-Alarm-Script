@@ -34,8 +34,8 @@ The above location will be assumed during the following steps.
 ```
 mkdir -p /opt/scripts/alarmscripts
 cd /opt/scripts/alarmscripts
-wget https://github.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/blob/main/retrieve_information.py
-wget https://github.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/blob/main/vm.alarm.new-vm.py
+wget https://raw.githubusercontent.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/refs/heads/main/retrieve_information.py
+wget https://raw.githubusercontent.com/KnutssonDevelopment/vCenter-Register-Owner-Alarm-Script/refs/heads/main/vm.alarm.new-vm.py
 chmod 700 /opt/scripts/alarmscripts/vm.alarm.new-vm.py
 chmod 700 /opt/scripts/alarmscripts/retrieve_information.py
 
