@@ -75,7 +75,7 @@ No you can go ahead and create and test the alarms.
 ### vCenter Role - Example
 |Role Name|Rule Privileges|
 |---------------------|------------------------------|
-|Set Custom Attributes|Global -> Set custom attribute|
+|Set Custom Attributes|Global -> Set custom attribute<br>Global -> Manage Custom Attributes|
 
 ### vCenter User - Example
 |Username|Permission Path|Role|Propagate to children|
